@@ -741,5 +741,56 @@ return [
         ],
     ],
 
+    'roleuser' => [
+        'title' => 'Roleusers',
+
+        'actions' => [
+            'index' => 'Roleusers',
+            'create' => 'New Roleuser',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            'admin_users_id' => 'Admin users',
+            'nombre' => 'Nombre',
+            
+        ],
+    ],
+
+    'role' => [
+        'title' => 'Roles',
+
+        'actions' => [
+            'index' => 'Roles',
+            'create' => 'New Role',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            'name' => 'Name',
+            'guard_name' => 'Guard name',
+            
+        ],
+    ],
+
+    'roleuser' => [
+        'title' => 'Roleusers',
+
+        'actions' => [
+            'index' => 'Roleusers',
+            'create' => 'New Roleuser',
+            'edit' => 'Edit :name',
+        ],
+
+        'columns' => [
+            'id' => 'ID',
+            'admin_users_id' => 'Admin users',
+            'role_id' => 'Role',
+            
+        ],
+    ],
+
     // Do not delete me :) I'm used for auto-generation
 ];

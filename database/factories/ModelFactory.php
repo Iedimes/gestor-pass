@@ -395,3 +395,36 @@ $factory->define(App\Models\Verification::class, static function (Faker\Generato
         
     ];
 });
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\Roleuser::class, static function (Faker\Generator $faker) {
+    return [
+        'admin_users_id' => $faker->randomNumber(5),
+        'nombre' => $faker->sentence,
+        'created_at' => $faker->dateTime,
+        'updated_at' => $faker->dateTime,
+        
+        
+    ];
+});
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\Role::class, static function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->firstName,
+        'guard_name' => $faker->sentence,
+        'created_at' => $faker->dateTime,
+        'updated_at' => $faker->dateTime,
+        
+        
+    ];
+});
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\Roleuser::class, static function (Faker\Generator $faker) {
+    return [
+        'admin_users_id' => $faker->randomNumber(5),
+        'role_id' => $faker->randomNumber(5),
+        'created_at' => $faker->dateTime,
+        'updated_at' => $faker->dateTime,
+        
+        
+    ];
+});

@@ -351,3 +351,34 @@ Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->gro
         });
     });
 });
+
+
+/* Auto-generated admin routes */
+Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(static function () {
+    Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin/')->group(static function() {
+        Route::prefix('roleusers')->name('roleusers/')->group(static function() {
+            Route::get('/',                                             'RoleusersController@index')->name('index');
+            Route::get('/create',                                       'RoleusersController@create')->name('create');
+            Route::post('/',                                            'RoleusersController@store')->name('store');
+            Route::get('/{roleuser}/edit',                              'RoleusersController@edit')->name('edit');
+            Route::post('/bulk-destroy',                                'RoleusersController@bulkDestroy')->name('bulk-destroy');
+            Route::post('/{roleuser}',                                  'RoleusersController@update')->name('update');
+            Route::delete('/{roleuser}',                                'RoleusersController@destroy')->name('destroy');
+        });
+    });
+});
+
+/* Auto-generated admin routes */
+Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(static function () {
+    Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin/')->group(static function() {
+        Route::prefix('roles')->name('roles/')->group(static function() {
+            Route::get('/',                                             'RolesController@index')->name('index');
+            Route::get('/create',                                       'RolesController@create')->name('create');
+            Route::post('/',                                            'RolesController@store')->name('store');
+            Route::get('/{role}/edit',                                  'RolesController@edit')->name('edit');
+            Route::post('/bulk-destroy',                                'RolesController@bulkDestroy')->name('bulk-destroy');
+            Route::post('/{role}',                                      'RolesController@update')->name('update');
+            Route::delete('/{role}',                                    'RolesController@destroy')->name('destroy');
+        });
+    });
+});

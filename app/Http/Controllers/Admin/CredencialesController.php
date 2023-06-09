@@ -101,6 +101,8 @@ class CredencialesController extends Controller
     public function usuario(IndexCredenciale $request)
     {
     $userCount = AdminUser::count();
+    $serviceCount = Grupo::count();
+    $credencialeCount = Credenciale::count();
 
     $data = AdminListing::create(Credenciale::class)->processRequestAndGet(
         $request,
@@ -117,7 +119,8 @@ class CredencialesController extends Controller
         return ['data' => $data];
     }
 
-    return view('brackets/admin-auth::admin.homepage.index', ['data' => $data, 'userCount' => $userCount]);
+    return view('brackets/admin-auth::admin.homepage.index', ['data' => $data,
+    'userCount' => $userCount,'serviceCount' => $serviceCount,'credencialeCount'=> $credencialeCount ]);
 }
 
 

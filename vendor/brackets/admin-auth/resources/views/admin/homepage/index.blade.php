@@ -7,8 +7,12 @@
 
 <div class="card">
   <div class="card-header">
-    <h3 class="card-title mb-0 text-primary font-weight-bold text-uppercase">Tablero</h3>
-  </div>
+  <h3 class="card-title mb-0 text-primary font-weight-bold text-uppercase">Bienvenido/a,  @if(!is_null(config('admin-auth.defaults.guard')))
+      <span class="hidden-md-down">{{ Auth::guard(config('admin-auth.defaults.guard'))->check() ? Auth::guard(config('admin-auth.defaults.guard'))->user()->full_name : 'Anonymous' }}</span>
+    @else
+      <span class="hidden-md-down">{{ Auth::check() ? Auth::user()->full_name : 'Anonymous' }}</span>
+    @endif
+    </h3>  </div>
   <div class="card-body">
  <div class="row">
   <div class="col-md-4">
@@ -28,7 +32,7 @@
         <div class="icon-container">
           <i class="bi bi-gear-fill"></i>
         </div>
-        <h5 class="card-title fw-bold mb-3" style="font-size: 40px"></h5>
+        <h5 class="card-title fw-bold mb-3" style="font-size: 40px">{{ $serviceCount}}</h5>
         <p class="card-text fs-5">TOTAL DE SERVICIOS</p>
       </div>
     </div>
@@ -39,7 +43,7 @@
         <div class="icon-container">
           <i class="bi bi-credit-card-2-front-fill"></i>
         </div>
-        <h5 class="card-title fw-bold mb-3" style="font-size: 40px"></h5>
+        <h5 class="card-title fw-bold mb-3" style="font-size: 40px">{{ $credencialeCount}}</h5>
         <p class="card-text fs-5">TOTAL DE CREDENCIALES</p>
       </div>
     </div>
@@ -47,24 +51,23 @@
 </div>
 
 <style>
-  .icon-container {
+  .icon-container-right {
     position: absolute;
     top: 0;
-    left: 0;
-    height: 100%; /* ajusta la altura del contenedor según tus necesidades */
+    right: 0;
+    height: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
-    opacity: 0.5; /* ajusta la opacidad según tus necesidades */
+    opacity: 0.5;
   }
 
-  .icon-container i {
-    font-size: 40px;
+  .icon-container-right i {
+    font-size: 60px;
   }
 
-  .card-body {
-    position: relative;
-    height: 200px; /* ajusta la altura de la tarjeta según tus necesidades */
+  .card {
+    height: 300px;
   }
 </style>
   </div>

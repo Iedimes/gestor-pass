@@ -39,33 +39,33 @@ class CredencialesController extends Controller
      * @param IndexCredenciale $request
      * @return array|Factory|View
      */
-    public function index(IndexCredenciale $request)
-    {
+    // public function index(IndexCredenciale $request)
+    // {
 
 
-        // create and AdminListing instance for a specific model and
-        $data = AdminListing::create(Credenciale::class)->processRequestAndGet(
-            // pass the request with params
-            $request,
+    //     // create and AdminListing instance for a specific model and
+    //     $data = AdminListing::create(Credenciale::class)->processRequestAndGet(
+    //         // pass the request with params
+    //         $request,
 
-            // set columns to query
-            ['id', 'usuario', 'contraseña', 'enlace', 'servidor_id', 'tipodeconexion_id', 'estado_id', 'grupo_id'],
+    //         // set columns to query
+    //         ['id', 'usuario', 'contraseña', 'enlace', 'servidor_id', 'tipodeconexion_id', 'estado_id', 'grupo_id'],
 
-            // set columns to searchIn
-            ['id', 'usuario', 'contraseña', 'enlace']
-        );
+    //         // set columns to searchIn
+    //         ['id', 'usuario', 'contraseña', 'enlace']
+    //     );
 
-        if ($request->ajax()) {
-            if ($request->has('bulk')) {
-                return [
-                    'bulkItems' => $data->pluck('id')
-                ];
-            }
-            return ['data' => $data];
-        }
+    //     if ($request->ajax()) {
+    //         if ($request->has('bulk')) {
+    //             return [
+    //                 'bulkItems' => $data->pluck('id')
+    //             ];
+    //         }
+    //         return ['data' => $data];
+    //     }
 
-        return view('admin.credenciale.index', ['data' => $data]);
-    }
+    //     return view('admin.credenciale.index', ['data' => $data]);
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -98,12 +98,35 @@ class CredencialesController extends Controller
 
     // }
 
-    public function usuario()
+    public function usuario(IndexCredenciale $request)
     {
-        //$this->authorize('admin.credenciale.create');
-        $userCount= AdminUser::count();
-        return view('brackets/admin-auth::admin.homepage.index', compact('userCount'));
+    $userCount = AdminUser::count();
+
+    $data = AdminListing::create(Credenciale::class)->processRequestAndGet(
+        $request,
+        ['id', 'usuario', 'contraseña', 'enlace', 'servidor_id', 'tipodeconexion_id', 'estado_id', 'grupo_id'],
+        ['id', 'usuario', 'contraseña', 'enlace']
+    );
+
+    if ($request->ajax()) {
+        if ($request->has('bulk')) {
+            return [
+                'bulkItems' => $data->pluck('id')
+            ];
+        }
+        return ['data' => $data];
     }
+
+    return view('brackets/admin-auth::admin.homepage.index', ['data' => $data, 'userCount' => $userCount]);
+}
+
+
+    // public function usuario()
+    // {
+    //     //$this->authorize('admin.credenciale.create');
+    //     $userCount= AdminUser::count();
+    //     return view('brackets/admin-auth::admin.homepage.index', compact('userCount'));
+    // }
 
 
 public function verificarContrasena(Request $request)

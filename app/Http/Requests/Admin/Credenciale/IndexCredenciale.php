@@ -12,10 +12,10 @@ class IndexCredenciale extends FormRequest
      *
      * @return bool
      */
-    public function authorize(): bool
-    {
-        return Gate::allows('admin.credenciale.index');
-    }
+    // public function authorize(): bool
+    // {
+    //     return Gate::allows('admin.credenciale.index');
+    // }
 
     /**
      * Get the validation rules that apply to the request.

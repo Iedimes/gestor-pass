@@ -75,6 +75,15 @@ class CredencialesController extends Controller
      */
 
 
+    public function resetear(){
+
+
+    return "resetear";
+        //return view('admin.credenciale.create',compact('estados','tipodeconexion','servidor','cat_informaciones','grupo'));
+
+    }
+
+
 
     public function create()
     {

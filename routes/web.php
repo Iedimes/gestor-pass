@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 
 Route::post('/verificar-contrasena', 'App\Http\Controllers\Admin\CredencialesController@verificarContrasena')->name('verificar-contrasena');
+Route::get('/resetearuser', 'App\Http\Controllers\Admin\CredencialesController@resetear')->name('resetear');
 
 Route::get('/admin', 'App\Http\Controllers\Admin\CredencialesController@usuario')->name('usuario');
 

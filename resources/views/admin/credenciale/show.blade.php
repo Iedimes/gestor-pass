@@ -90,6 +90,7 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                 <button type="submit" class="btn btn-primary">Verificar</button>
+
                             </div>
                             </form>
                     </div>
@@ -110,9 +111,23 @@
 
 
             </div>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#verificar-modal">
-                Verificar Contraseña
+
+         <div class="row">
+    <div class="col">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#verificar-modal">
+            Verificar Contraseña
+        </button>
+    </div>
+    <div class="col" style="text-align: right;">
+        <form method="POST" action="/resetearuser">
+            {{ csrf_field() }}
+            <button type="submit" class="btn btn-primary" name="resetear">
+                Resetear Contraseña
             </button>
+        </form>
+    </div>
+</div>
+
         </div>
     </div>
     @if (session('success'))

@@ -59,7 +59,7 @@ class AdminUser extends Authenticatable implements CanActivateContract, HasMedia
     ];
 
     protected $appends = ['full_name', 'resource_url'];
-    protected $with = ['rol'];
+    //protected $with = ['rol'];
 
     public function rol()
     {

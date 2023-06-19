@@ -6,7 +6,6 @@
 
     <verification-listing
         :data="{{ $data->toJson() }}"
-        {{-- role="{{ $role }}" --}}
         :url="'{{ url('admin/verifications') }}'"
         inline-template>
 

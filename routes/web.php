@@ -18,11 +18,7 @@ Route::get('/', function () {
 });
 
 Route::post('/verificar-contrasena', 'App\Http\Controllers\Admin\CredencialesController@verificarContrasena')->name('verificar-contrasena');
-//Route::post('/resetearuser', 'App\Http\Controllers\Admin\CredencialesController@resetear')->name('resetear1');
 Route::get('/admin/verifications/{verification}/resetear', 'App\Http\Controllers\Admin\VerificationsController@resetear')->name('resetear');
-
-
-// Route::get('/admin', 'App\Http\Controllers\Admin\CredencialesController@usuario')->name('usuario');
 
 
 /* Auto-generated admin routes */

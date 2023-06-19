@@ -38,11 +38,9 @@ class VerificationsController extends Controller
      */
     public function index(IndexVerification $request)
     {
-        //return Auth::user()->rol->role_id;
+
         if (Auth::user()->rol->role_id == 2){
-        // $login = auth()->id();
-        // $rol = Roleuser::where('admin_users_id', $login)->first();
-        // $role=$rol->role->id;
+
         // create and AdminListing instance for a specific model and
         $data = AdminListing::create(Verification::class)->processRequestAndGet(
             // pass the request with params
@@ -64,8 +62,8 @@ class VerificationsController extends Controller
             return ['data' => $data];
         }
 
-        // return view('admin.verification.index', ['data' => $data, 'role' => $rol]);
         return view('admin.verification.index', ['data' => $data]);
+
         }else{
             return "No tienes permiso para acceder a este nivel";
         }

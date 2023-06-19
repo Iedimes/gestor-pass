@@ -13,10 +13,10 @@ class UpdateVerification extends FormRequest
      *
      * @return bool
      */
-    public function authorize(): bool
-    {
-        return Gate::allows('admin.verification.edit', $this->verification);
-    }
+    // public function authorize(): bool
+    // {
+    //     return Gate::allows('admin.verification.edit', $this->verification);
+    // }
 
     /**
      * Get the validation rules that apply to the request.

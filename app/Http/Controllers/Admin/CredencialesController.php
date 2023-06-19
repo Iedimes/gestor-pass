@@ -28,6 +28,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 
 class CredencialesController extends Controller
@@ -75,17 +77,7 @@ class CredencialesController extends Controller
      */
 
 
-    public function resetear(){
-
-
-    return "resetear";
-        //return view('admin.credenciale.create',compact('estados','tipodeconexion','servidor','cat_informaciones','grupo'));
-
-    }
-
-
-
-    public function create()
+   public function create()
     {
         $this->authorize('admin.credenciale.create');
 
@@ -98,20 +90,23 @@ class CredencialesController extends Controller
 
     }
 
-    // public function usuario()
-    // {
-    //     $x = "Probando";
-
-    //     return view('brackets/admin-auth::admin.homepage.index', compact('x'));
-
-
-    // }
 
     public function usuario(IndexCredenciale $request)
     {
+        $hora_actual = Carbon::now('America/Asuncion')->hour;
+
+        if ($hora_actual >= 5 && $hora_actual < 12) {
+            $saludo = 'Buenos días';
+        } elseif ($hora_actual >= 12 && $hora_actual < 20) {
+            $saludo = 'Buenas tardes';
+        } else {
+            $saludo = 'Buenas noches';
+        }
+
     $userCount = AdminUser::count();
     $serviceCount = Grupo::count();
     $credencialeCount = Credenciale::count();
+    $user = Auth::user();
 
     $data = AdminListing::create(Credenciale::class)->processRequestAndGet(
         $request,
@@ -128,18 +123,9 @@ class CredencialesController extends Controller
         return ['data' => $data];
     }
 
-    return view('brackets/admin-auth::admin.homepage.index', ['data' => $data,
-    'userCount' => $userCount,'serviceCount' => $serviceCount,'credencialeCount'=> $credencialeCount ]);
+    return view('admin.credenciale.inicio', ['data' => $data,
+    'userCount' => $userCount,'serviceCount' => $serviceCount,'credencialeCount'=> $credencialeCount, 'saludo' => $saludo]);
 }
-
-
-    // public function usuario()
-    // {
-    //     //$this->authorize('admin.credenciale.create');
-    //     $userCount= AdminUser::count();
-    //     return view('brackets/admin-auth::admin.homepage.index', compact('userCount'));
-    // }
-
 
 public function verificarContrasena(Request $request)
 {

@@ -118,14 +118,6 @@
             Verificar Contraseña
         </button>
     </div>
-    <div class="col" style="text-align: right;">
-        <form method="POST" action="/resetearuser">
-            {{ csrf_field() }}
-            <button type="submit" class="btn btn-primary" name="resetear">
-                Resetear Contraseña
-            </button>
-        </form>
-    </div>
 </div>
 
         </div>

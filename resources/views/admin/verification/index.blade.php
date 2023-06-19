@@ -6,6 +6,7 @@
 
     <verification-listing
         :data="{{ $data->toJson() }}"
+        {{-- role="{{ $role }}" --}}
         :url="'{{ url('admin/verifications') }}'"
         inline-template>
 
@@ -81,6 +82,12 @@
                                             <div class="row no-gutters">
                                                 <div class="col-auto">
                                                     <a class="btn btn-sm btn-spinner btn-info" :href="item.resource_url + '/edit'" title="{{ trans('brackets/admin-ui::admin.btn.edit') }}" role="button"><i class="fa fa-edit"></i></a>
+                                                    {{-- @if($role->role_id==2) --}}
+
+                                                        <a class="btn btn-sm btn-spinner btn-success" :href="item.resource_url + '/resetear'" title="" role="button"><i class="fa fa-search"></i></a>
+                                                    {{-- @endif --}}
+
+
                                                 </div>
                                                 <form class="col" @submit.prevent="deleteItem(item.resource_url)">
                                                     <button type="submit" class="btn btn-sm btn-danger" title="{{ trans('brackets/admin-ui::admin.btn.delete') }}"><i class="fa fa-trash-o"></i></button>
@@ -99,6 +106,28 @@
                                     <pagination></pagination>
                                 </div>
                             </div>
+
+                            @if (session('reset_success'))
+                                <div class="alert alert-success">
+                                    {{ session('reset_success') }}
+                                </div>
+                            @endif
+
+                            @if (session('reset_error'))
+                                <div class="alert alert-danger">
+                                    {{ session('reset_error') }}
+                                </div>
+                            @endif
+
+                            <script>
+                                // Eliminar el mensaje de éxito después de 30 segundos
+                                setTimeout(function() {
+                                    var resetSuccessMessage = document.getElementById('reset-success-message');
+                                    if (resetSuccessMessage) {
+                                        resetSuccessMessage.remove();
+                                    }
+                                }, 30000);
+                            </script>
 
                             <div class="no-items-found" v-if="!collection.length > 0">
                                 <i class="icon-magnifier"></i>

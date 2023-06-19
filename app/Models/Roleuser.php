@@ -20,21 +20,18 @@ class Roleuser extends Model
     ];
 
     protected $appends = ['resource_url'];
-    protected $with = ['role','adminuser'];
+    // protected $with = ['role', 'nombre'];
 
 
-    public function role()
-    {
-        return $this->belongsTo('App\Models\Role');
+    // public function role()
+    // {
+    //     return $this->belongsTo('App\Models\Role','role_id','id');
 
-    }
-
-
-      public function adminuser()
-    {
-        return $this->belongsTo('App\Models\AdminUser','admin_users_id','id');
-
-    }
+    // }
+    // public function nombre()
+    // {
+    //     return $this->belongsTo('App\Models\AdminUser', 'admin_users_id', 'id');
+    // }
 
 
     /* ************************ ACCESSOR ************************* */

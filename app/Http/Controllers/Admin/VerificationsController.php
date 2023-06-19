@@ -10,8 +10,9 @@ use App\Http\Requests\Admin\Verification\StoreVerification;
 use App\Http\Requests\Admin\Verification\UpdateVerification;
 use App\Models\Verification;
 use App\Models\AdminUser;
+use App\Models\Roleuser;
 use Brackets\AdminListing\Facades\AdminListing;
-use Exception;
+//use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Contracts\View\Factory;
@@ -20,6 +21,11 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use Illuminate\Support\Facades\Auth;
+// use Illuminate\Support\Facades\Mail;
+// use Illuminate\Contracts\Mail\Mailable;
 
 class VerificationsController extends Controller
 {
@@ -32,6 +38,11 @@ class VerificationsController extends Controller
      */
     public function index(IndexVerification $request)
     {
+        //return Auth::user()->rol->role_id;
+        if (Auth::user()->rol->role_id == 2){
+        // $login = auth()->id();
+        // $rol = Roleuser::where('admin_users_id', $login)->first();
+        // $role=$rol->role->id;
         // create and AdminListing instance for a specific model and
         $data = AdminListing::create(Verification::class)->processRequestAndGet(
             // pass the request with params
@@ -53,8 +64,14 @@ class VerificationsController extends Controller
             return ['data' => $data];
         }
 
+        // return view('admin.verification.index', ['data' => $data, 'role' => $rol]);
         return view('admin.verification.index', ['data' => $data]);
+        }else{
+            return "No tienes permiso para acceder a este nivel";
+        }
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -131,6 +148,63 @@ class VerificationsController extends Controller
             'user' => $user,
         ]);
     }
+
+
+public function resetear($id)
+{
+    // Recupera el registro de verificación correspondiente al ID recibido
+    $registro = Verification::findOrFail($id);
+    $cod = $registro->admin_users_id;
+
+    // Recupera el usuario correspondiente al correo electrónico del registro de verificación
+    $correo = AdminUser::where('id', $cod)->first();
+    $email = $correo->email;
+
+    // Genera una nueva contraseña
+    $longitud = 8;
+    $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+=-';
+    $nuevaContraseña = str_random($longitud, $caracteres);
+
+    // Hashea la nueva contraseña y actualiza el campo de contraseña del usuario
+    $registro->password = bcrypt($nuevaContraseña);
+    $registro->save();
+
+    // Envía la nueva contraseña por correo electrónico utilizando PHPMailer
+    $subject = 'Nueva contraseña';
+    $message = 'La nueva contraseña es: ' . $nuevaContraseña;
+
+    try {
+        $mail = new PHPMailer(true);
+        $mail->isSMTP();
+        $mail->Host = env('MAIL_HOST');
+        $mail->SMTPAuth = true;
+        $mail->Username = env('MAIL_USERNAME');
+        $mail->Password = env('MAIL_PASSWORD');
+        $mail->SMTPSecure = env('MAIL_ENCRYPTION');
+        $mail->Port = env('MAIL_PORT');
+        $mail->setFrom('recuperacion@muvh.gov.py', 'DGTIC - MUVH');
+        $mail->addAddress($email);
+        $mail->Subject = $subject;
+        $mail->Body = $message;
+
+        // Desactiva la verificación del certificado SSL del servidor SMTP
+        $mail->SMTPOptions = array(
+            'ssl' => array(
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+                'allow_self_signed' => true
+            )
+        );
+
+        $mail->send();
+        // Agrega un mensaje de éxito a la variable de sesión
+        return redirect()->back()->with('reset_success', 'La nueva contraseña ha sido enviada por correo electrónico a ' . $email . '.');
+    } catch (Exception $e) {
+        // Agrega un mensaje de error a la variable de sesión
+        return redirect()->back()->with('reset_error', 'Error al enviar el correo electrónico: ' . $e->getMessage());
+    }
+}
+
 
     /**
      * Update the specified resource in storage.

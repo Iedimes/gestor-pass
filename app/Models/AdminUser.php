@@ -59,6 +59,14 @@ class AdminUser extends Authenticatable implements CanActivateContract, HasMedia
     ];
 
     protected $appends = ['full_name', 'resource_url'];
+    protected $with = ['rol'];
+
+    public function rol()
+    {
+        return $this->belongsTo('App\Models\Roleuser','id', 'admin_users_id');
+
+    }
+
     /* ************************ ACCESSOR ************************* */
     /**
      * Resource url to generate edit

@@ -1,10 +1,10 @@
-<div class="form-group row align-items-center" :class="{'has-danger': errors.has('credenciales_id'), 'has-success': fields.credenciales_id && fields.credenciales_id.valid }">
+{{-- <div class="form-group row align-items-center" :class="{'has-danger': errors.has('credenciales_id'), 'has-success': fields.credenciales_id && fields.credenciales_id.valid }">
     <label for="credenciales_id" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.cat-informacione.columns.credenciales_id') }}</label>
         <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
         <input type="text" v-model="form.credenciales_id" v-validate="'required'" @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('credenciales_id'), 'form-control-success': fields.credenciales_id && fields.credenciales_id.valid}" id="credenciales_id" name="credenciales_id" placeholder="{{ trans('admin.cat-informacione.columns.credenciales_id') }}">
         <div v-if="errors.has('credenciales_id')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('credenciales_id') }}</div>
     </div>
-</div>
+</div> --}}
 
 <div class="form-group row align-items-center" :class="{'has-danger': errors.has('tipo_debd_id'), 'has-success': fields.tipo_debd_id && fields.tipo_debd_id.valid }">
     <label for="tipo_debd_id" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.cat-informacione.columns.tipo_debd_id') }}</label>

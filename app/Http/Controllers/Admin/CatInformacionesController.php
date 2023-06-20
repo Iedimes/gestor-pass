@@ -118,16 +118,30 @@ class CatInformacionesController extends Controller
      * @throws AuthorizationException
      * @return Factory|View
      */
-    public function edit(CatInformacione $catInformacione)
-    {
-        $this->authorize('admin.cat-informacione.edit', $catInformacione);
+    // public function edit(CatInformacione $catInformacione)
+    // {
+    //     $this->authorize('admin.cat-informacione.edit', $catInformacione);
 
 
-        return view('admin.cat-informacione.edit', [
-            'catInformacione' => $catInformacione,
-        ]);
+    //     return view('admin.cat-informacione.edit', [
+    //         'catInformacione' => $catInformacione,
+    //     ]);
+    // }
+
+    public function modificar($id)
+{
+    $catInformacione = CatInformacione::where('credenciales_id', $id)->first();
+
+    if (is_null($catInformacione)) {
+        abort(404);
     }
 
+    $this->authorize('admin.cat-informacione.edit', $catInformacione);
+
+    return view('admin.cat-informacione.edit', [
+        'catInformacione' => $catInformacione,
+    ]);
+}
     /**
      * Update the specified resource in storage.
      *
@@ -144,10 +158,12 @@ class CatInformacionesController extends Controller
         $catInformacione->update($sanitized);
 
         if ($request->ajax()) {
-            return [
-                'redirect' => url('admin/cat-informaciones'),
-                'message' => trans('brackets/admin-ui::admin.operation.succeeded'),
-            ];
+            return ['redirect' => url('admin/credenciales/'.$request->credenciales_id.'/show'),
+            'message' => trans('brackets/admin-ui::admin.operation.succeeded')];
+            // return [
+            //     'redirect' => url('admin/cat-informaciones'),
+            //     'message' => trans('brackets/admin-ui::admin.operation.succeeded'),
+            // ];
         }
 
         return redirect('admin/cat-informaciones');

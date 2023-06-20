@@ -263,6 +263,8 @@
     </div>
     @if  (empty($credenciale->cat_informaciones))
     <a class="btn btn-primary btn-spinner btn-sm pull-right m-b-0 rounded-pill" href="{{ url('admin/cat-informaciones/'.$credenciale->id.'/createdetail') }}" role="button"><i class="fa fa-plus"></i>&nbsp; {{ trans('Agregar') }}</a>
+    @else
+    <a class="btn btn-primary btn-spinner btn-sm pull-right m-b-0 rounded-pill" href="{{ url('admin/cat-informaciones/'.$credenciale->id.'/modificar') }}" role="button"><i class="fa fa-plus"></i>&nbsp; {{ trans('Editar') }}</a>
     @endif
   </div>
 </div>

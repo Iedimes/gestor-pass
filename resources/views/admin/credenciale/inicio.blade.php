@@ -15,7 +15,7 @@
     @else
       <span class="hidden-md-down">{{ Auth::check() ? Auth::user()->full_name : 'Anonymous' }}</span>
     @endif
-    </h3>  </div>
+    </h3>  </div></div>
   <div class="card-body">
     <div class="row">
         <div class="col-lg-4 col-6">

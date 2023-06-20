@@ -122,6 +122,7 @@ Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->gro
             Route::post('/{catInformacione}',                           'CatInformacionesController@update')->name('update');
             Route::delete('/{catInformacione}',                         'CatInformacionesController@destroy')->name('destroy');
             Route::get('/{catInformacione}/createdetail',               'CatInformacionesController@createdetail')->name('createdetail');
+            Route::get('/{catInformacione}/modificar',                  'CatInformacionesController@modificar')->name('modificar');
         });
     });
 });

@@ -118,6 +118,8 @@ class VerificationsController extends Controller
         }
 
         return redirect('admin/verifications');
+
+
     }
 
     /**
@@ -143,6 +145,7 @@ class VerificationsController extends Controller
      */
     public function edit(Verification $verification)
     {
+        if (Auth::user()->rol->role_id == 2){
         $this->authorize('admin.verification.edit', $verification);
 
         $user=AdminUser::all();
@@ -151,6 +154,10 @@ class VerificationsController extends Controller
             'verification' => $verification,
             'user' => $user,
         ]);
+    }else{
+        $mensaje="No tienes permiso para acceder a este nivel!!!";
+        return view('admin.verification.sinpermiso', ['mensaje' => $mensaje]);
+    }
     }
 
 

@@ -11,7 +11,7 @@ use App\Http\Requests\Admin\Roleuser\UpdateRoleuser;
 use App\Models\Roleuser;
 use App\Models\Role;
 use App\Models\AdminUser;
-
+use Illuminate\Support\Facades\Auth;
 use Brackets\AdminListing\Facades\AdminListing;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -34,6 +34,7 @@ class RoleusersController extends Controller
      */
     public function index(IndexRoleuser $request)
     {
+        if (Auth::user()->rol->role_id == 2){
         // create and AdminListing instance for a specific model and
         $data = AdminListing::create(Roleuser::class)->processRequestAndGet(
             // pass the request with params
@@ -56,6 +57,10 @@ class RoleusersController extends Controller
         }
 
         return view('admin.roleuser.index', ['data' => $data]);
+    }else{
+        $mensaje="No tienes permiso para acceder a este nivel!!!";
+        return view('admin.verification.sinpermiso', ['mensaje' => $mensaje]);
+    }
     }
 
     /**
@@ -66,9 +71,14 @@ class RoleusersController extends Controller
      */
     public function create()
     {
+        if (Auth::user()->rol->role_id == 2){
         $this->authorize('admin.roleuser.create');
 
         return view('admin.roleuser.create');
+    }else{
+        $mensaje="No tienes permiso para acceder a este nivel!!!";
+        return view('admin.verification.sinpermiso', ['mensaje' => $mensaje]);
+    }
     }
 
     /**
@@ -115,12 +125,17 @@ class RoleusersController extends Controller
      */
     public function edit(Roleuser $roleuser)
     {
+        if (Auth::user()->rol->role_id == 2){
         $this->authorize('admin.roleuser.edit', $roleuser);
 
 
         return view('admin.roleuser.edit', [
             'roleuser' => $roleuser,
         ]);
+    }else{
+        $mensaje="No tienes permiso para acceder a este nivel!!!";
+        return view('admin.verification.sinpermiso', ['mensaje' => $mensaje]);
+    }
     }
 
     /**

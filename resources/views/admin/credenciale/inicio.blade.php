@@ -66,7 +66,9 @@
                 <div class="card">
                     <div class="card-header">
                         <i class="fa fa-align-justify"></i> {{ trans('admin.credenciale.actions.index') }}
+                        @if(Auth::user()->rol->role_id != 3)
                         <a class="btn btn-primary btn-spinner btn-sm pull-right m-b-0" href="{{ url('admin/credenciales/create') }}" role="button"><i class="fa fa-plus"></i>&nbsp; {{ trans('admin.credenciale.actions.create') }}</a>
+                        @endif
                     </div>
                     <div class="card-body" v-cloak>
                         <div class="card-block">

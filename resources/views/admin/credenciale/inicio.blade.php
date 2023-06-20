@@ -141,13 +141,17 @@
                                         <td>
                                             <div class="row no-gutters">
                                                 <div class="col-auto">
+                                                    @if(Auth::user()->rol->role_id != 3)
                                                     <a class="btn btn-sm btn-spinner btn-info" :href="item.resource_url + '/edit'" title="{{ trans('brackets/admin-ui::admin.btn.edit') }}" role="button"><i class="fa fa-edit"></i></a>
+                                                    @endif
                                                     <a class="btn btn-sm btn-spinner btn-info" :href="item.resource_url + '/show'" title="{{ trans('brackets/admin-ui::admin.btn.edit') }}" role="button"><i class="fa fa-search"></i></a>
                                                 </div>
 
 
                                                 <form class="col" @submit.prevent="deleteItem(item.resource_url)">
+                                                    @if(Auth::user()->rol->role_id != 3)
                                                     <button type="submit" class="btn btn-sm btn-danger" title="{{ trans('brackets/admin-ui::admin.btn.delete') }}"><i class="fa fa-trash-o"></i></button>
+                                                    @endif
                                                 </form>
                                             </div>
                                         </td>

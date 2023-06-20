@@ -65,7 +65,8 @@ class VerificationsController extends Controller
         return view('admin.verification.index', ['data' => $data]);
 
         }else{
-            return "No tienes permiso para acceder a este nivel";
+            $mensaje="No tienes permiso para acceder a este nivel!!!";
+            return view('admin.verification.sinpermiso', ['mensaje' => $mensaje]);
         }
     }
 
@@ -80,9 +81,14 @@ class VerificationsController extends Controller
     public function create()
     {
         $this->authorize('admin.verification.create');
+        if (Auth::user()->rol->role_id == 2){
         $user=AdminUser::all();
 
         return view('admin.verification.create', compact('user'));
+        }else{
+            $mensaje="No tienes permiso para acceder a este nivel!!!";
+            return view('admin.verification.sinpermiso', ['mensaje' => $mensaje]);
+        }
     }
 
     /**

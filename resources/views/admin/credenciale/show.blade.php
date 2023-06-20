@@ -90,7 +90,6 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                 <button type="submit" class="btn btn-primary">Verificar</button>
-
                             </div>
                             </form>
                     </div>
@@ -114,9 +113,11 @@
 
          <div class="row">
     <div class="col">
+    @if(Auth::user()->rol->role_id != 3)
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#verificar-modal">
             Verificar Contraseña
         </button>
+    @endif
     </div>
 </div>
 

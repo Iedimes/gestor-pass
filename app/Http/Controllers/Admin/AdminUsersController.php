@@ -54,6 +54,7 @@ class AdminUsersController extends Controller
      */
     public function index(IndexAdminUser $request)
     {
+        if (Auth::user()->rol->role_id == 2){
         // create and AdminListing instance for a specific model and
         $data = AdminListing::create(AdminUser::class)->processRequestAndGet(
             // pass the request with params
@@ -71,6 +72,10 @@ class AdminUsersController extends Controller
         }
 
         return view('admin.admin-user.index', ['data' => $data, 'activation' => Config::get('admin-auth.activation_enabled')]);
+        }else{
+            $mensaje="No tienes permiso para acceder a este nivel!!!";
+            return view('admin.verification.sinpermiso', ['mensaje' => $mensaje]);
+        }
     }
 
     /**
@@ -81,12 +86,17 @@ class AdminUsersController extends Controller
      */
     public function create()
     {
+        if (Auth::user()->rol->role_id == 2){
         $this->authorize('admin.admin-user.create');
 
         return view('admin.admin-user.create', [
             'activation' => Config::get('admin-auth.activation_enabled'),
             'roles' => Role::where('guard_name', $this->guard)->get(),
         ]);
+        }else{
+            $mensaje="No tienes permiso para acceder a este nivel!!!";
+            return view('admin.verification.sinpermiso', ['mensaje' => $mensaje]);
+        }
     }
 
     /**

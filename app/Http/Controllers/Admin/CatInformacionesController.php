@@ -68,6 +68,14 @@ class CatInformacionesController extends Controller
         return view('admin.cat-informacione.create');
     }
 
+    public function createdetail($id)
+    {
+        $this->authorize('admin.cat-informacione.create');
+
+        return view('admin.cat-informacione.create', compact('id'));
+    }
+
+
     /**
      * Store a newly created resource in storage.
      *
@@ -77,13 +85,13 @@ class CatInformacionesController extends Controller
     public function store(StoreCatInformacione $request)
     {
         // Sanitize input
-        $sanitized = $request->getSanitized();
+       $sanitized = $request->getSanitized();
 
         // Store the CatInformacione
         $catInformacione = CatInformacione::create($sanitized);
 
         if ($request->ajax()) {
-            return ['redirect' => url('admin/cat-informaciones'), 'message' => trans('brackets/admin-ui::admin.operation.succeeded')];
+            return ['redirect' => url('admin/credenciales/'.$request->credenciales_id.'/show'), 'message' => trans('brackets/admin-ui::admin.operation.succeeded')];
         }
 
         return redirect('admin/cat-informaciones');

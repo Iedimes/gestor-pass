@@ -26,14 +26,14 @@ class StoreCatInformacione extends FormRequest
     public function rules(): array
     {
         return [
-            'credenciales_id' => ['required', 'string'],
-            'tipo_debd_id' => ['required', 'string'],
+            'credenciales_id' => ['required'],
+            'tipo_debd_id' => ['required'],
             'nombredebd' => ['required', 'string'],
             'versiones' => ['required', 'string'],
             'ssl' => ['required', 'string'],
             'fecha_vec_dominio' => ['required', 'date'],
             'fecha_vec_ssl' => ['required', 'date'],
-            
+
         ];
     }
 

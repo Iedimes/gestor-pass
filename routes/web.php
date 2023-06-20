@@ -121,6 +121,7 @@ Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->gro
             Route::post('/bulk-destroy',                                'CatInformacionesController@bulkDestroy')->name('bulk-destroy');
             Route::post('/{catInformacione}',                           'CatInformacionesController@update')->name('update');
             Route::delete('/{catInformacione}',                         'CatInformacionesController@destroy')->name('destroy');
+            Route::get('/{catInformacione}/createdetail',               'CatInformacionesController@createdetail')->name('createdetail');
         });
     });
 });

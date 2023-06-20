@@ -26,7 +26,8 @@ class Credenciale extends Model
     public $timestamps = false;
 
     protected $appends = ['resource_url'];
-    protected $with = ['estado','servidor','grupo','cat_informaciones','tipodeconexion'];
+    // protected $with = ['estado','servidor','grupo','cat_informaciones','tipodeconexion'];
+    protected $with = ['estado','servidor','grupo','tipodeconexion'];
 
 
     public function cat_informaciones()

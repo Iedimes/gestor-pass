@@ -29,12 +29,18 @@ class CatInformacione extends Model
 
     protected $appends = ['resource_url'];
 
-    protected $with = ['tipodebd'];
+    protected $with = ['tipodebd', 'credenciales'];
 
 
     public function tipodebd()
     {
         return $this->belongsTo('App\Models\TipoDebd','tipo_debd_id','id');
+
+    }
+
+    public function credenciales()
+    {
+        return $this->belongsTo('App\Models\Credenciale','credenciales_id','id');
 
     }
 

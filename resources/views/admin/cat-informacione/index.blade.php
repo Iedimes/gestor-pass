@@ -30,7 +30,7 @@
                                     </div>
                                     <div class="col-sm-auto form-group ">
                                         <select class="form-control" v-model="pagination.state.per_page">
-                                            
+
                                             <option value="10">10</option>
                                             <option value="25">25</option>
                                             <option value="100">100</option>
@@ -81,14 +81,14 @@
                                         </td>
 
                                     <td>@{{ item.id }}</td>
-                                        <td>@{{ item.credenciales_id }}</td>
-                                        <td>@{{ item.tipo_debd_id }}</td>
+                                        <td>@{{ item.credenciales.grupo.nombre }}</td>
+                                        <td>@{{ item.tipodebd.nombre }}</td>
                                         <td>@{{ item.nombredebd }}</td>
                                         <td>@{{ item.versiones }}</td>
                                         <td>@{{ item.ssl }}</td>
                                         <td>@{{ item.fecha_vec_dominio | date }}</td>
                                         <td>@{{ item.fecha_vec_ssl | date }}</td>
-                                        
+
                                         <td>
                                             <div class="row no-gutters">
                                                 <div class="col-auto">

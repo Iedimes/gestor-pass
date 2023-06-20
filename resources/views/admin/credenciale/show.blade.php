@@ -168,7 +168,7 @@
     @if (empty($credenciale->cat_informaciones->tipodebd->nombre))
 
     @else
-    <input type="text" id="tipo_bd" name="tipo_bd" class="form-control custom-input" value="{{ $credenciale->cat_informaciones->tipodebd->nombre }}">
+    <input type="text" id="tipo_bd" name="tipo_bd" class="form-control custom-input" value="{{ $credenciale->cat_informaciones->tipodebd->nombre }}" readonly>
     @endif
 
   </div>
@@ -178,7 +178,7 @@
     @if (empty($credenciale->cat_informaciones->nombredebd))
 
     @else
-    <input type="text" id="nombre_bd" name="nombre_bd" class="form-control custom-input" value="{{ $credenciale->cat_informaciones->nombredebd }}">
+    <input type="text" id="nombre_bd" name="nombre_bd" class="form-control custom-input" value="{{ $credenciale->cat_informaciones->nombredebd }}" readonly>
     @endif
 
   </div>
@@ -188,7 +188,7 @@
     @if (empty($credenciale->cat_informaciones->tipodebd ->version))
 
     @else
-    <input type="text" id="version_bd" name="version_bd" class="form-control custom-input" value="{{ $credenciale->cat_informaciones->tipodebd ->version}}">
+    <input type="text" id="version_bd" name="version_bd" class="form-control custom-input" value="{{ $credenciale->cat_informaciones->tipodebd ->version}}" readonly>
     @endif
 
   </div>
@@ -200,7 +200,7 @@
       @if (empty($credenciale->cat_informaciones->tipodebd->nombre))
 
       @else
-      <input type="text" id="tipo_bd" name="tipo_bd" class="form-control custom-input" value="{{ $credenciale->cat_informaciones->tipodebd->nombre }}">
+      <input type="text" id="tipo_bd" name="tipo_bd" class="form-control custom-input" value="{{ $credenciale->cat_informaciones->tipodebd->nombre }}" readonly>
       @endif
 
     </div>
@@ -209,7 +209,7 @@
       @if (empty($credenciale->cat_informaciones->nombredebd))
 
       @else
-      <input type="text" id="nombre_bd" name="nombre_bd" class="form-control custom-input" value="{{ $credenciale->cat_informaciones->nombredebd }}">
+      <input type="text" id="nombre_bd" name="nombre_bd" class="form-control custom-input" value="{{ $credenciale->cat_informaciones->nombredebd }}" readonly>
       @endif
 
     </div>
@@ -218,7 +218,7 @@
       @if (empty($credenciale->cat_informaciones->tipodebd ->version))
 
       @else
-      <input type="text" id="version_bd" name="version_bd" class="form-control custom-input" value="{{ $credenciale->cat_informaciones->tipodebd ->version}}">
+      <input type="text" id="version_bd" name="version_bd" class="form-control custom-input" value="{{ $credenciale->cat_informaciones->tipodebd ->version}}" readonly>
       @endif
 
     </div>
@@ -229,7 +229,7 @@
       @if (empty($credenciale->cat_informaciones->fecha_vec_dominio))
 
       @else
-      <input type="text"class="form-control custom-input"value="{{date("d/m/Y", strtotime($credenciale->cat_informaciones->fecha_vec_dominio))}} ">
+      <input type="text"class="form-control custom-input"value="{{date("d/m/Y", strtotime($credenciale->cat_informaciones->fecha_vec_dominio))}} " readonly>
       @endif
 
     </div>
@@ -238,7 +238,7 @@
       @if (empty($credenciale->cat_informaciones->fecha_vec_ssl))
 
       @else
-      <input type="text" id="venc_ssl" name="venc_ssl" class="form-control custom-input" value=" {{date("d/m/Y", strtotime($credenciale->cat_informaciones->fecha_vec_ssl))}} ">
+      <input type="text" id="venc_ssl" name="venc_ssl" class="form-control custom-input" value=" {{date("d/m/Y", strtotime($credenciale->cat_informaciones->fecha_vec_ssl))}} " readonly>
       @endif
 
     </div>
@@ -249,7 +249,7 @@
       @if (empty($credenciale->cat_informaciones->ssl))
 
       @else
-      <input type="text" id="ssl" name="ssl" class="form-control custom-input" value="{{ $credenciale->cat_informaciones->ssl }}">
+      <input type="text" id="ssl" name="ssl" class="form-control custom-input" value="{{ $credenciale->cat_informaciones->ssl }}" readonly>
       @endif
 
     </div>
@@ -258,10 +258,12 @@
       @if (empty($credenciale->cat_informaciones->versiones))
 
       @else
-      <input type="text" id="version" name="version" class="form-control custom-input" value="{{ $credenciale->cat_informaciones->versiones }}">
+      <input type="text" id="version" name="version" class="form-control custom-input" value="{{ $credenciale->cat_informaciones->versiones }}" readonly>
       @endif
-
     </div>
+    @if  (empty($credenciale->cat_informaciones))
+    <a class="btn btn-primary btn-spinner btn-sm pull-right m-b-0 rounded-pill" href="{{ url('admin/cat-informaciones/'.$credenciale->id.'/createdetail') }}" role="button"><i class="fa fa-plus"></i>&nbsp; {{ trans('Agregar') }}</a>
+    @endif
   </div>
 </div>
 

@@ -26,14 +26,14 @@ class UpdateCatInformacione extends FormRequest
     public function rules(): array
     {
         return [
-            'credenciales_id' => ['sometimes', 'string'],
-            'tipo_debd_id' => ['sometimes', 'string'],
+            'credenciales_id' => ['sometimes'],
+            'tipo_debd_id' => ['sometimes'],
             'nombredebd' => ['sometimes', 'string'],
             'versiones' => ['sometimes', 'string'],
             'ssl' => ['sometimes', 'string'],
             'fecha_vec_dominio' => ['sometimes', 'date'],
             'fecha_vec_ssl' => ['sometimes', 'date'],
-            
+
         ];
     }
 

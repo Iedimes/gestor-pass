@@ -15,6 +15,7 @@ class CatInformacione extends Model
         'ssl',
         'fecha_vec_dominio',
         'fecha_vec_ssl',
+        'tipo_servicios_id'
 
     ];
 
@@ -29,7 +30,7 @@ class CatInformacione extends Model
 
     protected $appends = ['resource_url'];
 
-    protected $with = ['tipodebd', 'credenciales'];
+    protected $with = ['tipodebd', 'credenciales', 'tiposervicios'];
 
 
     public function tipodebd()
@@ -41,6 +42,12 @@ class CatInformacione extends Model
     public function credenciales()
     {
         return $this->belongsTo('App\Models\Credenciale','credenciales_id','id');
+
+    }
+
+    public function tiposervicios()
+    {
+        return $this->belongsTo('App\Models\TipoServicio','tipo_servicios_id','id');
 
     }
 

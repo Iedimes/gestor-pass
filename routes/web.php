@@ -202,3 +202,19 @@ Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->gro
         });
     });
 });
+
+
+/* Auto-generated admin routes */
+Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(static function () {
+    Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin/')->group(static function() {
+        Route::prefix('tipo-servicios')->name('tipo-servicios/')->group(static function() {
+            Route::get('/',                                             'TipoServiciosController@index')->name('index');
+            Route::get('/create',                                       'TipoServiciosController@create')->name('create');
+            Route::post('/',                                            'TipoServiciosController@store')->name('store');
+            Route::get('/{tipoServicio}/edit',                          'TipoServiciosController@edit')->name('edit');
+            Route::post('/bulk-destroy',                                'TipoServiciosController@bulkDestroy')->name('bulk-destroy');
+            Route::post('/{tipoServicio}',                              'TipoServiciosController@update')->name('update');
+            Route::delete('/{tipoServicio}',                            'TipoServiciosController@destroy')->name('destroy');
+        });
+    });
+});

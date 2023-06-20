@@ -37,7 +37,7 @@ class CatInformacionesController extends Controller
             $request,
 
             // set columns to query
-            ['id', 'credenciales_id', 'tipo_debd_id', 'nombredebd', 'versiones', 'ssl', 'fecha_vec_dominio', 'fecha_vec_ssl'],
+            ['id', 'credenciales_id', 'tipo_debd_id', 'nombredebd', 'versiones', 'ssl', 'fecha_vec_dominio', 'fecha_vec_ssl','tipo_servicios_id'],
 
             // set columns to searchIn
             ['id', 'nombredebd', 'versiones', 'ssl']
@@ -160,10 +160,6 @@ class CatInformacionesController extends Controller
         if ($request->ajax()) {
             return ['redirect' => url('admin/credenciales/'.$request->credenciales_id.'/show'),
             'message' => trans('brackets/admin-ui::admin.operation.succeeded')];
-            // return [
-            //     'redirect' => url('admin/cat-informaciones'),
-            //     'message' => trans('brackets/admin-ui::admin.operation.succeeded'),
-            // ];
         }
 
         return redirect('admin/cat-informaciones');

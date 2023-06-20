@@ -33,6 +33,7 @@ class StoreCatInformacione extends FormRequest
             'ssl' => ['required', 'string'],
             'fecha_vec_dominio' => ['required', 'date'],
             'fecha_vec_ssl' => ['required', 'date'],
+            'tipo_servicios_id' => [],
 
         ];
     }

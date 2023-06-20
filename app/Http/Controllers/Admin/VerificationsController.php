@@ -181,8 +181,8 @@ public function resetear($id)
     $registro->save();
 
     // Envía la nueva contraseña por correo electrónico utilizando PHPMailer
-    $subject = 'Nueva contraseña';
-    $message = 'La nueva contraseña es: ' . $nuevaContraseña;
+    $subject = 'Nueva credencial';
+    $message = 'La nueva credencial es: ' . $nuevaContraseña;
 
     try {
         $mail = new PHPMailer(true);

@@ -13,6 +13,7 @@ Vue.component('cat-informacione-form', {
                 ssl:  '' ,
                 fecha_vec_dominio:  '' ,
                 fecha_vec_ssl:  '' ,
+                tipo_servicios_id: '',
 
             }
         }

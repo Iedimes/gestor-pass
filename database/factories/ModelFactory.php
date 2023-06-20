@@ -428,3 +428,13 @@ $factory->define(App\Models\Roleuser::class, static function (Faker\Generator $f
         
     ];
 });
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\TipoServicio::class, static function (Faker\Generator $faker) {
+    return [
+        'nombre' => $faker->sentence,
+        'created_at' => $faker->dateTime,
+        'updated_at' => $faker->dateTime,
+        
+        
+    ];
+});

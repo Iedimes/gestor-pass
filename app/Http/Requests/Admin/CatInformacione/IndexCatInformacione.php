@@ -25,7 +25,7 @@ class IndexCatInformacione extends FormRequest
     public function rules(): array
     {
         return [
-            'orderBy' => 'in:id,credenciales_id,tipo_debd_id,nombredebd,versiones,ssl,fecha_vec_dominio,fecha_vec_ssl|nullable',
+            'orderBy' => 'in:id,credenciales_id,tipo_debd_id,nombredebd,versiones,ssl,fecha_vec_dominio,fecha_vec_ssl,tipo_servicios_id|nullable',
             'orderDirection' => 'in:asc,desc|nullable',
             'search' => 'string|nullable',
             'page' => 'integer|nullable',

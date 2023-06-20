@@ -20,3 +20,4 @@ import './profile-edit-password';
 import './verification';
 import './roleuser';
 import './role';
+import './tipo-servicio';

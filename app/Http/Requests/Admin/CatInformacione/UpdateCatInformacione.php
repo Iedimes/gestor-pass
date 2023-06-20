@@ -33,6 +33,7 @@ class UpdateCatInformacione extends FormRequest
             'ssl' => ['sometimes', 'string'],
             'fecha_vec_dominio' => ['sometimes', 'date'],
             'fecha_vec_ssl' => ['sometimes', 'date'],
+            'tipo_servicios_id' => [],
 
         ];
     }

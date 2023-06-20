@@ -205,10 +205,10 @@ public function verificarContrasena(Request $request)
         ]);
 
         if ($request->ajax()) {
-            return ['redirect' => url('admin/credenciales'), 'message' => trans('brackets/admin-ui::admin.operation.succeeded')];
+            return ['redirect' => url('admin/credenciales/inicio'), 'message' => trans('brackets/admin-ui::admin.operation.succeeded')];
         }
 
-        return redirect('admin/credenciales');
+        return redirect('admin/credenciales/inicio');
     }
 
     /**
@@ -301,10 +301,12 @@ public function verificarContrasena(Request $request)
 
 
         if ($request->ajax()) {
-            return [
-                'redirect' => url('admin/credenciales'),
-                'message' => trans('brackets/admin-ui::admin.operation.succeeded'),
-            ];
+            return ['redirect' => url('admin/credenciales/inicio'),
+            'message' => trans('brackets/admin-ui::admin.operation.succeeded')];
+            // return [
+            //     'redirect' => url('admin/credenciales'),
+            //     'message' => trans('brackets/admin-ui::admin.operation.succeeded'),
+            // ];
         }
 
         return redirect('admin/credenciales');

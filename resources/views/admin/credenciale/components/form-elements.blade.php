@@ -9,7 +9,7 @@
 <div class="form-group row align-items-center" :class="{'has-danger': errors.has('contraseña'), 'has-success': fields.contraseña && fields.contraseña.valid }">
     <label for="contraseña" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.credenciale.columns.contraseña') }}</label>
         <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
-        <input type="text" v-model="form.contraseña" v-validate="'required'" @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('contraseña'), 'form-control-success': fields.contraseña && fields.contraseña.valid}" id="contraseña" name="contraseña" placeholder="{{ trans('admin.credenciale.columns.contraseña') }}">
+        <input type="password" v-model="form.contraseña" v-validate="'required'" @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('contraseña'), 'form-control-success': fields.contraseña && fields.contraseña.valid}" id="contraseña" name="contraseña" placeholder="{{ trans('admin.credenciale.columns.contraseña') }}">
         <div v-if="errors.has('contraseña')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('contraseña') }}</div>
     </div>
 </div>

@@ -7,7 +7,7 @@
            <li class="nav-item"><a class="nav-link" href="{{ url('admin/tipodeconexions') }}"><i class="nav-icon icon-drop"></i> {{ trans('admin.tipodeconexion.title') }}</a></li>
            <li class="nav-item"><a class="nav-link" href="{{ url('admin/estados') }}"><i class="nav-icon icon-book-open"></i> {{ trans('admin.estado.title') }}</a></li>
            <li class="nav-item"><a class="nav-link" href="{{ url('admin/servidors') }}"><i class="nav-icon icon-energy"></i> {{ trans('admin.servidor.title') }}</a></li>
-           <li class="nav-item"><a class="nav-link" href="{{ url('admin/cat-informaciones') }}"><i class="nav-icon icon-ghost"></i> {{ trans('admin.cat-informacione.title') }}</a></li>
+           {{-- <li class="nav-item"><a class="nav-link" href="{{ url('admin/cat-informaciones') }}"><i class="nav-icon icon-ghost"></i> {{ trans('admin.cat-informacione.title') }}</a></li> --}}
            <li class="nav-item"><a class="nav-link" href="{{ url('admin/grupos') }}"><i class="nav-icon icon-compass"></i> {{ trans('admin.grupo.title') }}</a></li>
            <li class="nav-item"><a class="nav-link" href="{{ url('admin/tipo-debds') }}"><i class="nav-icon icon-flag"></i> {{ trans('admin.tipo-debd.title') }}</a></li>
            <li class="nav-item"><a class="nav-link" href="{{ url('admin/verifications') }}"><i class="nav-icon icon-energy"></i> {{ trans('admin.verification.title') }}</a></li>
@@ -27,7 +27,7 @@
            <li class="nav-item"><a class="nav-link" href="{{ url('admin/tipodeconexions') }}"><i class="nav-icon icon-drop"></i> {{ trans('admin.tipodeconexion.title') }}</a></li>
            <li class="nav-item"><a class="nav-link" href="{{ url('admin/estados') }}"><i class="nav-icon icon-book-open"></i> {{ trans('admin.estado.title') }}</a></li>
            <li class="nav-item"><a class="nav-link" href="{{ url('admin/servidors') }}"><i class="nav-icon icon-energy"></i> {{ trans('admin.servidor.title') }}</a></li>
-           <li class="nav-item"><a class="nav-link" href="{{ url('admin/cat-informaciones') }}"><i class="nav-icon icon-ghost"></i> {{ trans('admin.cat-informacione.title') }}</a></li>
+           {{-- <li class="nav-item"><a class="nav-link" href="{{ url('admin/cat-informaciones') }}"><i class="nav-icon icon-ghost"></i> {{ trans('admin.cat-informacione.title') }}</a></li> --}}
            <li class="nav-item"><a class="nav-link" href="{{ url('admin/grupos') }}"><i class="nav-icon icon-compass"></i> {{ trans('admin.grupo.title') }}</a></li>
            <li class="nav-item"><a class="nav-link" href="{{ url('admin/tipo-debds') }}"><i class="nav-icon icon-flag"></i> {{ trans('admin.tipo-debd.title') }}</a></li>
            {{-- <li class="nav-item"><a class="nav-link" href="{{ url('admin/verifications') }}"><i class="nav-icon icon-energy"></i> {{ trans('admin.verification.title') }}</a></li> --}}

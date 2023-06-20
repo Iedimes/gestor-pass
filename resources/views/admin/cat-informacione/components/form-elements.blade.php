@@ -33,7 +33,11 @@
 <div class="form-group row align-items-center" :class="{'has-danger': errors.has('ssl'), 'has-success': fields.ssl && fields.ssl.valid }">
     <label for="ssl" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.cat-informacione.columns.ssl') }}</label>
         <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
-        <input type="text" v-model="form.ssl" v-validate="'required'" @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('ssl'), 'form-control-success': fields.ssl && fields.ssl.valid}" id="ssl" name="ssl" placeholder="{{ trans('admin.cat-informacione.columns.ssl') }}">
+        {{-- <input type="text" v-model="form.ssl" v-validate="'required'" @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('ssl'), 'form-control-success': fields.ssl && fields.ssl.valid}" id="ssl" name="ssl" placeholder="{{ trans('admin.cat-informacione.columns.ssl') }}"> --}}
+        <select name="ssl" id="ssl" v-model="form.ssl" class="form-control">
+            <option value="SI">SI</option>
+            <option value="NO">NO</option>
+        </select>
         <div v-if="errors.has('ssl')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('ssl') }}</div>
     </div>
 </div>

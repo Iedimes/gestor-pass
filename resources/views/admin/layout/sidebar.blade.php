@@ -3,7 +3,7 @@
         <ul class="nav">
            @if (Auth::user()->rol->role_id == 2)
            <li class="nav-title">{{ trans('brackets/admin-ui::admin.sidebar.content') }}</li>
-           <li class="nav-item"><a class="nav-link" href="{{ url('admin/credenciales/inicio') }}"><i class="nav-icon icon-magnet"></i> Inicio</a></li>
+           <li class="nav-item"><a class="nav-link" href="{{ url('admin/credenciales/inicio') }}"><i class="nav-icon icon-magnet"></i> INICIO</a></li>
            <li class="nav-item"><a class="nav-link" href="{{ url('admin/tipodeconexions') }}"><i class="nav-icon icon-drop"></i> {{ trans('admin.tipodeconexion.title') }}</a></li>
            <li class="nav-item"><a class="nav-link" href="{{ url('admin/estados') }}"><i class="nav-icon icon-book-open"></i> {{ trans('admin.estado.title') }}</a></li>
            <li class="nav-item"><a class="nav-link" href="{{ url('admin/servidors') }}"><i class="nav-icon icon-energy"></i> {{ trans('admin.servidor.title') }}</a></li>

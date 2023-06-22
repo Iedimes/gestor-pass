@@ -23,11 +23,11 @@
         <div v-if="errors.has('role_id')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('role_id') }}</div>
     </div>
 </div>
-{{-- <script>
+<script>
     var roles = @json($rol);
     var selectedRole = @json($roleuser->roles);
     var form = {
         role: selectedRole ? { id: selectedRole.id, name: selectedRole.name } : null,
     };
-</script> --}}
+</script>
 

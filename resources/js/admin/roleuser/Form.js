@@ -2,7 +2,7 @@ import AppForm from '../app-components/Form/AppForm';
 
 Vue.component('roleuser-form', {
     mixins: [AppForm],
-    props: ['rol', 'person'],
+    props: ['rol'],
     data: function() {
         return {
             form: {

@@ -10,8 +10,6 @@
 
         <roleuser-form
             :action="'{{ url('admin/roleusers') }}'"
-            :rol="{{ $rol->toJson() }}"
-            :person="{{ $person->toJson() }}"
             v-cloak
             inline-template>
 

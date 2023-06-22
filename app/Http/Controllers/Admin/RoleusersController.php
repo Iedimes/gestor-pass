@@ -127,10 +127,12 @@ class RoleusersController extends Controller
     {
         if (Auth::user()->rol->role_id == 2){
         $this->authorize('admin.roleuser.edit', $roleuser);
+        $rol = Role::all();
 
 
         return view('admin.roleuser.edit', [
             'roleuser' => $roleuser,
+            'rol' => $rol,
         ]);
     }else{
         $mensaje="No tienes permiso para acceder a este nivel!!!";
@@ -149,6 +151,7 @@ class RoleusersController extends Controller
     {
         // Sanitize input
         $sanitized = $request->getSanitized();
+        $sanitized ['role_id']=  $request->getRolId();
 
         // Update changed values Roleuser
         $roleuser->update($sanitized);

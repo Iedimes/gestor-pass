@@ -27,8 +27,8 @@ class UpdateRoleuser extends FormRequest
     {
         return [
             'admin_users_id' => ['sometimes', 'integer'],
-            'role_id' => ['sometimes', 'integer'],
-            
+            'role' => ['sometimes'],
+
         ];
     }
 
@@ -45,5 +45,10 @@ class UpdateRoleuser extends FormRequest
         //Add your code for manipulation with request data here
 
         return $sanitized;
+    }
+
+    public function getRolId()
+    {
+        return $this->get('role')['id'];
     }
 }

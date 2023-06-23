@@ -11,7 +11,6 @@
         <roleuser-form
             :action="'{{ url('admin/roleusers') }}'"
             :rol="{{ $rol->toJson() }}"
-            :persona="{{ $persona->toJson() }}"
             v-cloak
             inline-template>
 

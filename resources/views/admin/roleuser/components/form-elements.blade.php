@@ -2,18 +2,12 @@
     <label for="admin_users_id" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.roleuser.columns.admin_users_id') }}</label>
         <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
         {{-- <input type="text" v-model="form.admin_users_id" v-validate="'required|integer'" @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('admin_users_id'), 'form-control-success': fields.admin_users_id && fields.admin_users_id.valid}" id="admin_users_id" name="admin_users_id" placeholder="{{ trans('admin.roleuser.columns.admin_users_id') }}"> --}}
-        <multiselect
-    v-model="form.admin_users_id"
-    :options="persona"
-    :multiple="false"
-    track-by="id"
-    label="full_name"
-    :taggable="true"
-    tag-placeholder=""
-    placeholder=""
-    name="admin_users_id"
-    @input="updatePersona">
-</multiselect>
+        <select name="admin_users_id" id="admin_users_id" v-model="form.admin_users_id" class="form-control">
+        {{-- <option value="0">--SELECCIONAR USUARIO--</option> --}}
+            @foreach($admin as $admin)
+                <option value="{{ $admin['id']}}"> {{ $admin->full_name }}</option>
+            @endforeach
+        </select>
         <div v-if="errors.has('admin_users_id')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('admin_users_id') }}</div>
     </div>
 </div>

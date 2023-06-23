@@ -49,9 +49,4 @@ class StoreRoleuser extends FormRequest
     {
         return $this->get('role')['id'];
     }
-
-    public function getUsuarioId()
-    {
-        return $this->get('admin_users')['id'];
-    }
 }

@@ -55,7 +55,7 @@
     <div :class="isFormLocalized ? 'col-md-4' : 'col-sm-8'">
         <div class="input-group input-group--custom">
             <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-            <datetime v-model="form.fecha_vec_dominio" :config="datePickerConfig" v-validate="'required|date_format:yyyy-MM-dd HH:mm:ss'" class="flatpickr" :class="{'form-control-danger': errors.has('fecha_vec_dominio'), 'form-control-success': fields.fecha_vec_dominio && fields.fecha_vec_dominio.valid}" id="fecha_vec_dominio" name="fecha_vec_dominio" placeholder="{{ trans('brackets/admin-ui::admin.forms.select_a_date') }}"></datetime>
+            <datetime v-model="form.fecha_vec_dominio" :config="datePickerConfig" class="flatpickr" :class="{'form-control-danger': errors.has('fecha_vec_dominio'), 'form-control-success': fields.fecha_vec_dominio && fields.fecha_vec_dominio.valid}" id="fecha_vec_dominio" name="fecha_vec_dominio" placeholder="{{ trans('brackets/admin-ui::admin.forms.select_a_date') }}"></datetime>
         </div>
         <div v-if="errors.has('fecha_vec_dominio')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('fecha_vec_dominio') }}</div>
     </div>
@@ -66,7 +66,7 @@
     <div :class="isFormLocalized ? 'col-md-4' : 'col-sm-8'">
         <div class="input-group input-group--custom">
             <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-            <datetime v-model="form.fecha_vec_ssl" :config="datePickerConfig" v-validate="'required|date_format:yyyy-MM-dd HH:mm:ss'" class="flatpickr" :class="{'form-control-danger': errors.has('fecha_vec_ssl'), 'form-control-success': fields.fecha_vec_ssl && fields.fecha_vec_ssl.valid}" id="fecha_vec_ssl" name="fecha_vec_ssl" placeholder="{{ trans('brackets/admin-ui::admin.forms.select_a_date') }}"></datetime>
+            <datetime v-model="form.fecha_vec_ssl" :config="datePickerConfig" class="flatpickr" :class="{'form-control-danger': errors.has('fecha_vec_ssl'), 'form-control-success': fields.fecha_vec_ssl && fields.fecha_vec_ssl.valid}" id="fecha_vec_ssl" name="fecha_vec_ssl" placeholder="{{ trans('brackets/admin-ui::admin.forms.select_a_date') }}"></datetime>
         </div>
         <div v-if="errors.has('fecha_vec_ssl')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('fecha_vec_ssl') }}</div>
     </div>

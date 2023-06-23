@@ -26,9 +26,18 @@ class StoreRoleuser extends FormRequest
     public function rules(): array
     {
         return [
-            'admin_users_id' => ['required'],
-            'role' => ['required'],
+            'admin_users_id' => 'required|unique:roleusers|max:255',
+            'role_id' => ['required'],
 
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'admin_users_id.required' => 'Debe cargar un usuario.',
+            'admin_users_id.unique' => 'El usuario que desea agregar, ya cuenta con un rol asignado.',
+            'role_id.required' => 'Debe cargar un rol.',
         ];
     }
 

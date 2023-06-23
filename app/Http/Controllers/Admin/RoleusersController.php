@@ -73,8 +73,10 @@ class RoleusersController extends Controller
     {
         if (Auth::user()->rol->role_id == 2){
         $this->authorize('admin.roleuser.create');
+        $rol = Role::all();
+        $persona = AdminUser::all();
 
-        return view('admin.roleuser.create');
+        return view('admin.roleuser.create', compact('rol', 'persona'));
     }else{
         $mensaje="No tienes permiso para acceder a este nivel!!!";
         return view('admin.verification.sinpermiso', ['mensaje' => $mensaje]);
@@ -91,6 +93,8 @@ class RoleusersController extends Controller
     {
         // Sanitize input
         $sanitized = $request->getSanitized();
+        $sanitized ['role_id']=  $request->getRolId();
+        $sanitized ['admin_users_id']=  $request->getUsuarioId();
 
         // Store the Roleuser
         $roleuser = Roleuser::create($sanitized);

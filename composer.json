@@ -12,7 +12,8 @@
         "laravel/framework": "^9.0",
         "laravel/sanctum": "^2.14",
         "laravel/tinker": "^2.7",
-        "phpmailer/phpmailer": "^6.8"
+        "phpmailer/phpmailer": "^6.8",
+        "swiftmailer/swiftmailer": "^6.3"
     },
     "require-dev": {
         "brackets/admin-generator": "^6.2",

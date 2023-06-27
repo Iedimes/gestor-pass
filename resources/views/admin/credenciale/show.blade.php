@@ -6,8 +6,8 @@
 
 <div class="card">
     <div class="card-header text-center">
-    <h2>Detalles de la Credencial : </h2>
-        <h6>{{ $credenciale->grupo->nombre }}</h6>
+    <h2>DETALLE CREDENCIAL </h2>
+        {{-- <h6>{{ $credenciale->grupo->nombre }}</h6> --}}
     </div>
 
     <div class="card-body">
@@ -56,7 +56,7 @@
     <div class="col-6">
         <div class="card">
             <div class="card-header text-center">
-                CREDENCIAL :
+                ACCESO:
             </div>
                 <div class="card-body">
                 <div class="form-group">

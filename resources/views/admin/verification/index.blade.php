@@ -80,12 +80,8 @@
                                         <td>
                                             <div class="row no-gutters">
                                                 <div class="col-auto">
+                                                    <a class="btn btn-sm btn-spinner btn-success" :href="item.resource_url + '/resetear'" title="{{ trans('brackets/admin-ui::admin.btn.reset') }}" role="button"><i class="fa fa-search"></i></a>
                                                     <a class="btn btn-sm btn-spinner btn-info" :href="item.resource_url + '/edit'" title="{{ trans('brackets/admin-ui::admin.btn.edit') }}" role="button"><i class="fa fa-edit"></i></a>
-                                                    {{-- @if($role->role_id==2) --}}
-
-                                                        <a class="btn btn-sm btn-spinner btn-success" :href="item.resource_url + '/resetear'" title="" role="button"><i class="fa fa-search"></i></a>
-                                                    {{-- @endif --}}
-
 
                                                 </div>
                                                 <form class="col" @submit.prevent="deleteItem(item.resource_url)">

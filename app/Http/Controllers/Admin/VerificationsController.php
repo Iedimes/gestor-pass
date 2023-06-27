@@ -24,6 +24,7 @@ use Illuminate\View\View;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 // use Illuminate\Support\Facades\Mail;
 // use Illuminate\Contracts\Mail\Mailable;
 
@@ -161,6 +162,61 @@ class VerificationsController extends Controller
     }
 
 
+// public function resetear($id)
+// {
+//     // Recupera el registro de verificación correspondiente al ID recibido
+//     $registro = Verification::findOrFail($id);
+//     $cod = $registro->admin_users_id;
+
+//     // Recupera el usuario correspondiente al correo electrónico del registro de verificación
+//     $correo = AdminUser::where('id', $cod)->first();
+//     $email = $correo->email;
+
+//     // Genera una nueva contraseña
+//     $longitud = 8;
+//     $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+=-';
+//     $nuevaContraseña = str_random($longitud, $caracteres);
+
+//     // Hashea la nueva contraseña y actualiza el campo de contraseña del usuario
+//     $registro->password = bcrypt($nuevaContraseña);
+//     $registro->save();
+
+//     // Envía la nueva contraseña por correo electrónico utilizando PHPMailer
+//     $subject = 'Nueva credencial';
+//     $message = 'La nueva credencial es: ' . $nuevaContraseña;
+
+//     try {
+//         $mail = new PHPMailer(true);
+//         $mail->isSMTP();
+//         $mail->Host = '192.168.101.16';
+//         $mail->SMTPAuth = true;
+//         $mail->Username = 'muvh\recuperacion';
+//         $mail->Password = '*.*r3cup3r@cion';
+//         $mail->SMTPSecure = null;
+//         $mail->Port = 465;
+//         $mail->setFrom('recuperacion@muvh.gov.py', 'DGTIC - MUVH');
+//         $mail->addAddress($email);
+//         $mail->Subject = $subject;
+//         $mail->Body = $message;
+
+//         // Desactiva la verificación del certificado SSL del servidor SMTP
+//         $mail->SMTPOptions = array(
+//             'ssl' => array(
+//                 'verify_peer' => false,
+//                 'verify_peer_name' => false,
+//                 'allow_self_signed' => true
+//             )
+//         );
+
+//         $mail->send();
+//         // Agrega un mensaje de éxito a la variable de sesión
+//         return redirect()->back()->with('reset_success', 'La nueva contraseña ha sido enviada por correo electrónico a ' . $email . '.');
+//     } catch (Exception $e) {
+//         // Agrega un mensaje de error a la variable de sesión
+//         return redirect()->back()->with('reset_error', 'Error al enviar el correo electrónico: ' . $e->getMessage());
+//     }
+// }
+
 public function resetear($id)
 {
     // Recupera el registro de verificación correspondiente al ID recibido
@@ -180,41 +236,25 @@ public function resetear($id)
     $registro->password = bcrypt($nuevaContraseña);
     $registro->save();
 
-    // Envía la nueva contraseña por correo electrónico utilizando PHPMailer
-    $subject = 'Nueva credencial';
-    $message = 'La nueva credencial es: ' . $nuevaContraseña;
+    // Envía la nueva contraseña por correo electrónico utilizando la plantilla reset_password
+    $subject = 'Nueva Credencial';
+    $actionUrl = url('password/reset', $registro->token);
+    $actionText = 'Restablecer contraseña';
 
     try {
-        $mail = new PHPMailer(true);
-        $mail->isSMTP();
-        $mail->Host = env('MAIL_HOST');
-        $mail->SMTPAuth = true;
-        $mail->Username = env('MAIL_USERNAME');
-        $mail->Password = env('MAIL_PASSWORD');
-        $mail->SMTPSecure = env('MAIL_ENCRYPTION');
-        $mail->Port = env('MAIL_PORT');
-        $mail->setFrom('recuperacion@muvh.gov.py', 'DGTIC - MUVH');
-        $mail->addAddress($email);
-        $mail->Subject = $subject;
-        $mail->Body = $message;
-
-        // Desactiva la verificación del certificado SSL del servidor SMTP
-        $mail->SMTPOptions = array(
-            'ssl' => array(
-                'verify_peer' => false,
-                'verify_peer_name' => false,
-                'allow_self_signed' => true
-            )
-        );
-
-        $mail->send();
+        Mail::send('admin.verification.reseteo', compact('actionUrl', 'actionText', 'nuevaContraseña'), function ($message) use ($email, $subject) {
+            $message->to($email);
+            $message->subject($subject);
+            $message->from('recuperacion@muvh.gov.py', 'DGTIC - MUVH');
+        });
         // Agrega un mensaje de éxito a la variable de sesión
-        return redirect()->back()->with('reset_success', 'La nueva contraseña ha sido enviada por correo electrónico a ' . $email . '.');
+        return redirect()->back()->with('reset_success', 'La contraseña ha sido enviado por correo electrónico a ' . $email . '.');
     } catch (Exception $e) {
         // Agrega un mensaje de error a la variable de sesión
         return redirect()->back()->with('reset_error', 'Error al enviar el correo electrónico: ' . $e->getMessage());
     }
 }
+
 
 
     /**

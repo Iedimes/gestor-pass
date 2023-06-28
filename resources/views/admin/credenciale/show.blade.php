@@ -28,7 +28,7 @@
         </div>
         <div class="row">
             <div class="form-group col-sm-2">
-                            <p class="card-text"><strong>IP/SERVIDOR:</strong> {{date("d/m/Y", strtotime($credenciale->fecha))}}</p>
+                            <p class="card-text"><strong>FECHA PUBLICACION:</strong> {{date("d/m/Y", strtotime($credenciale->fecha))}}</p>
 
         </div>
             <div class="form-group col-sm-3">
@@ -263,8 +263,13 @@
     @if  (empty($credenciale->cat_informaciones))
     <a class="btn btn-primary btn-spinner btn-sm pull-right m-b-0 rounded-pill" href="{{ url('admin/cat-informaciones/'.$credenciale->id.'/createdetail') }}" role="button"><i class="fa fa-plus"></i>&nbsp; {{ trans('Agregar') }}</a>
     @else
+    @if (Auth::user()->rol->role_id !== 3)
+
     <a class="btn btn-primary btn-spinner btn-sm pull-right m-b-0 rounded-pill" href="{{ url('admin/cat-informaciones/'.$credenciale->id.'/modificar') }}" role="button"><i class="fa fa-plus"></i>&nbsp; {{ trans('Editar') }}</a>
     @endif
+
+    @endif
+
   </div>
 </div>
 

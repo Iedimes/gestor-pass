@@ -81,9 +81,9 @@
 
                                         <td>@{{ item.enlace }}</td>
                                         <td>@{{ item.servidor.ip }}</td>
-                                        <td v-if="item.estado.id == 1" ><span class="badge bg-warning">@{{ item.estado.nombre }}</span></td>
+                                        <td v-if="item.estado.id == 1" ><span class="badge bg-success ">@{{ item.estado.nombre }}</span></td>
                                         <td v-if="item.estado.id == 2" ><span class="badge bg-primary">@{{ item.estado.nombre }}</span></td>
-                                        <td v-if="item.estado.id == 3" ><span class="badge bg-success">@{{ item.estado.nombre }}</span></td>
+                                        <td v-if="item.estado.id == 3" ><span class="badge bg-warning">@{{ item.estado.nombre }}</span></td>
 
 
                                         <td>

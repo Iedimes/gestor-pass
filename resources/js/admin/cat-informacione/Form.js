@@ -2,7 +2,7 @@ import AppForm from '../app-components/Form/AppForm';
 
 Vue.component('cat-informacione-form', {
     mixins: [AppForm],
-    props:['credenciales'],
+    props:['credenciales', 'tipo_servicios'],
     data: function() {
         return {
             form: {
@@ -13,7 +13,7 @@ Vue.component('cat-informacione-form', {
                 ssl:  '' ,
                 fecha_vec_dominio:  '' ,
                 fecha_vec_ssl:  '' ,
-                tipo_servicios_id: '',
+                tipo_servicios: '',
 
             }
         }

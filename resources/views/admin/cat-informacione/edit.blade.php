@@ -10,6 +10,7 @@
             <cat-informacione-form
                 :action="'{{ $catInformacione->resource_url }}'"
                 :data="{{ $catInformacione->toJson() }}"
+                :tipo_servicios="{{ $tipo_servicios->toJson() }}"
                 v-cloak
                 inline-template>
 

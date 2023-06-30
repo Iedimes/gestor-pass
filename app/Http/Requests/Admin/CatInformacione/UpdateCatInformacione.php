@@ -13,10 +13,10 @@ class UpdateCatInformacione extends FormRequest
      *
      * @return bool
      */
-    public function authorize(): bool
-    {
-        return Gate::allows('admin.cat-informacione.edit', $this->catInformacione);
-    }
+    // public function authorize(): bool
+    // {
+    //     return Gate::allows('admin.cat-informacione.edit', $this->catInformacione);
+    // }
 
     /**
      * Get the validation rules that apply to the request.
@@ -33,7 +33,7 @@ class UpdateCatInformacione extends FormRequest
             'ssl' => ['sometimes', 'string'],
             'fecha_vec_dominio' => ['sometimes', 'date'],
             'fecha_vec_ssl' => ['sometimes', 'date'],
-            'tipo_servicios_id' => [],
+            'tipo_servicios' => ['sometimes'],
 
         ];
     }
@@ -51,5 +51,10 @@ class UpdateCatInformacione extends FormRequest
         //Add your code for manipulation with request data here
 
         return $sanitized;
+    }
+
+    public function getTipoId()
+    {
+        return $this->get('tipo_servicios')['id'];
     }
 }

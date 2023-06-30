@@ -9,6 +9,7 @@ use App\Http\Requests\Admin\CatInformacione\IndexCatInformacione;
 use App\Http\Requests\Admin\CatInformacione\StoreCatInformacione;
 use App\Http\Requests\Admin\CatInformacione\UpdateCatInformacione;
 use App\Models\CatInformacione;
+use App\Models\TipoServicio;
 use Brackets\AdminListing\Facades\AdminListing;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -136,10 +137,13 @@ class CatInformacionesController extends Controller
         abort(404);
     }
 
-    $this->authorize('admin.cat-informacione.edit', $catInformacione);
+    // $this->authorize('admin.cat-informacione.edit', $catInformacione);
+
+    $tipo_servicios = TipoServicio::all();
 
     return view('admin.cat-informacione.edit', [
         'catInformacione' => $catInformacione,
+        'tipo_servicios' => $tipo_servicios,
     ]);
 }
     /**
@@ -150,21 +154,23 @@ class CatInformacionesController extends Controller
      * @return array|RedirectResponse|Redirector
      */
     public function update(UpdateCatInformacione $request, CatInformacione $catInformacione)
-    {
-        // Sanitize input
-        $sanitized = $request->getSanitized();
+{
+    // Sanitize input
+    $sanitized = $request->getSanitized();
+    dd($sanitized['tipo_servicios'] = $request->getTipoId());
 
-        // Update changed values CatInformacione
-        $catInformacione->update($sanitized);
+    // Update changed values CatInformacione
+    $catInformacione->update($sanitized);
 
-        if ($request->ajax()) {
-            return ['redirect' => url('admin/credenciales/'.$request->credenciales_id.'/show'),
-            'message' => trans('brackets/admin-ui::admin.operation.succeeded')];
-        }
-
-        return redirect('admin/cat-informaciones');
+    if ($request->ajax()) {
+        return [
+            'redirect' => url('admin/credenciales/' . $request->credenciales_id . '/show'),
+            'message' => trans('brackets/admin-ui::admin.operation.succeeded')
+        ];
     }
 
+    return redirect('admin/cat-informaciones');
+}
     /**
      * Remove the specified resource from storage.
      *

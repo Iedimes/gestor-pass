@@ -45,7 +45,17 @@
 <div class="form-group row align-items-center" :class="{'has-danger': errors.has('tipo_servicios_id'), 'has-success': fields.tipo_servicios_id && fields.tipo_servicios_id.valid }">
     <label for="tipo_servicios_id" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.cat-informacione.columns.tipo_servicios_id') }}</label>
         <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
-        <input type="text" v-model="form.tipo_servicios_id" v-validate="'required'" @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('tipo_servicios_id'), 'form-control-success': fields.tipo_servicios_id && fields.tipo_servicios_id.valid}" id="tipo_servicios_id" name="tipo_servicios_id" placeholder="{{ trans('admin.cat-informacione.columns.tipo_servicios_id') }}">
+        {{-- <input type="text" v-model="form.tipo_servicios_id" v-validate="'required'" @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('tipo_servicios_id'), 'form-control-success': fields.tipo_servicios_id && fields.tipo_servicios_id.valid}" id="tipo_servicios_id" name="tipo_servicios_id" placeholder="{{ trans('admin.cat-informacione.columns.tipo_servicios_id') }}"> --}}
+        <multiselect
+        v-model="form.tipo_servicios"
+        :options="tipo_servicios"
+        :multiple="false"
+        track-by="id"
+        label="nombre"
+        :taggable="true"
+        tag-placeholder=""
+        placeholder="">
+    </multiselect>
         <div v-if="errors.has('tipo_servicios_id')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('tipo_servicios_id') }}</div>
     </div>
 </div>

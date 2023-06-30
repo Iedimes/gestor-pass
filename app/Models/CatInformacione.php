@@ -30,7 +30,7 @@ class CatInformacione extends Model
 
     protected $appends = ['resource_url'];
 
-    protected $with = ['tipodebd', 'credenciales', 'tiposervicios'];
+    protected $with = ['tipodebd', 'credenciales', 'tipo_servicios'];
 
 
     public function tipodebd()
@@ -45,7 +45,7 @@ class CatInformacione extends Model
 
     }
 
-    public function tiposervicios()
+    public function tipo_servicios()
     {
         return $this->belongsTo('App\Models\TipoServicio','tipo_servicios_id','id');
 

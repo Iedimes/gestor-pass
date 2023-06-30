@@ -25,8 +25,7 @@
         :taggable="true"
         tag-placeholder=""
         placeholder=""
-        name="role_id"
-        @input="updateRole">
+        name="role_id">
     </multiselect>
         <div v-if="errors.has('role_id')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('role_id') }}</div>
     </div>

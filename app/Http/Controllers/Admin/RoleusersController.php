@@ -130,12 +130,12 @@ class RoleusersController extends Controller
     {
         if (Auth::user()->rol->role_id == 2){
         $this->authorize('admin.roleuser.edit', $roleuser);
-        $rol = Role::all();
+        $role = Role::all();
 
 
         return view('admin.roleuser.edit', [
             'roleuser' => $roleuser,
-            'rol' => $rol,
+            'role' => $role,
         ]);
     }else{
         $mensaje="No tienes permiso para acceder a este nivel!!!";

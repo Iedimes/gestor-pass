@@ -10,7 +10,7 @@
             <roleuser-form
                 :action="'{{ $roleuser->resource_url }}'"
                 :data="{{ $roleuser->toJson() }}"
-                :rol="{{ $rol->toJson() }}"
+                :role="{{ $role->toJson() }}"
                 v-cloak
                 inline-template>
 

@@ -12,7 +12,7 @@
         {{-- <input type="text" v-model="form.role_id" v-validate="'required|integer'" @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('role_id'), 'form-control-success': fields.role_id && fields.role_id.valid}" id="role_id" name="role_id" placeholder="{{ trans('admin.roleuser.columns.role_id') }}"> --}}
         <multiselect
     v-model="form.role"
-    :options="rol"
+    :options="role"
     :multiple="false"
     track-by="id"
     label="name"
@@ -23,11 +23,11 @@
         <div v-if="errors.has('role_id')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('role_id') }}</div>
     </div>
 </div>
-<script>
+{{-- <script>
     var roles = @json($rol);
     var selectedRole = @json($roleuser->roles);
     var form = {
         role: selectedRole ? { id: selectedRole.id, name: selectedRole.name } : null,
     };
-</script>
+</script> --}}
 

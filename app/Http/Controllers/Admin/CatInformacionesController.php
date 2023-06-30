@@ -157,7 +157,7 @@ class CatInformacionesController extends Controller
 {
     // Sanitize input
     $sanitized = $request->getSanitized();
-    dd($sanitized['tipo_servicios'] = $request->getTipoId());
+    $sanitized['tipo_servicios_id'] = $request->getTipoId();
 
     // Update changed values CatInformacione
     $catInformacione->update($sanitized);

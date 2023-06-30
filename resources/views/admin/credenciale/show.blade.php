@@ -236,7 +236,7 @@
       @if (empty($credenciale->cat_informaciones->ssl))
 
       @else
-      <input type="text" id="ssl" name="ssl" class="form-control custom-input" value="{{ $credenciale->cat_informaciones->tiposervicios->nombre  }}" readonly>
+      <input type="text" id="ssl" name="ssl" class="form-control custom-input" value="{{ $credenciale->cat_informaciones->tipo_servicios->nombre  }}" readonly>
       @endif
     </div>
 

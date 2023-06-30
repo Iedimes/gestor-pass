@@ -2,7 +2,7 @@ import AppForm from '../app-components/Form/AppForm';
 
 Vue.component('roleuser-form', {
     mixins: [AppForm],
-    props: ['rol'],
+    props: ['role'],
     data: function() {
         return {
             form: {
@@ -11,9 +11,4 @@ Vue.component('roleuser-form', {
             }
         }
     },
-    methods: {
-        updateRole(selected) {
-            this.form.role_id = selected.id;
-        },
-    }
 });

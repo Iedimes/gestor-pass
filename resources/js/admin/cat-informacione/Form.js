@@ -2,7 +2,7 @@ import AppForm from '../app-components/Form/AppForm';
 
 Vue.component('cat-informacione-form', {
     mixins: [AppForm],
-    props:['credenciales', 'tipo_servicios'],
+    props:['credenciales', 'tipo_servicios', 'tipo_debd'],
     data: function() {
         return {
             form: {

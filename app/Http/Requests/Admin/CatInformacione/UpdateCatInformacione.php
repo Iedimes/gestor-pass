@@ -57,4 +57,9 @@ class UpdateCatInformacione extends FormRequest
     {
         return $this->get('tipo_servicios')['id'];
     }
+
+    public function getTipoBdId()
+    {
+        return $this->get('tipo_debd')['id'];
+    }
 }

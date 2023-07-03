@@ -9,7 +9,17 @@
 <div class="form-group row align-items-center" :class="{'has-danger': errors.has('tipo_debd_id'), 'has-success': fields.tipo_debd_id && fields.tipo_debd_id.valid }">
     <label for="tipo_debd_id" class="col-form-label text-md-right" :class="isFormLocalized ? 'col-md-4' : 'col-md-2'">{{ trans('admin.cat-informacione.columns.tipo_debd_id') }}</label>
         <div :class="isFormLocalized ? 'col-md-4' : 'col-md-9 col-xl-8'">
-        <input type="text" v-model="form.tipo_debd_id" v-validate="'required'" @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('tipo_debd_id'), 'form-control-success': fields.tipo_debd_id && fields.tipo_debd_id.valid}" id="tipo_debd_id" name="tipo_debd_id" placeholder="{{ trans('admin.cat-informacione.columns.tipo_debd_id') }}">
+        {{-- <input type="text" v-model="form.tipo_debd_id" v-validate="'required'" @input="validate($event)" class="form-control" :class="{'form-control-danger': errors.has('tipo_debd_id'), 'form-control-success': fields.tipo_debd_id && fields.tipo_debd_id.valid}" id="tipo_debd_id" name="tipo_debd_id" placeholder="{{ trans('admin.cat-informacione.columns.tipo_debd_id') }}"> --}}
+        <multiselect
+        v-model="form.tipo_debd"
+        :options="tipo_debd"
+        :multiple="false"
+        track-by="id"
+        label="nombre"
+        :taggable="true"
+        tag-placeholder=""
+        placeholder="">
+    </multiselect>
         <div v-if="errors.has('tipo_debd_id')" class="form-control-feedback form-text" v-cloak>@{{ errors.first('tipo_debd_id') }}</div>
     </div>
 </div>

@@ -10,6 +10,7 @@ use App\Http\Requests\Admin\CatInformacione\StoreCatInformacione;
 use App\Http\Requests\Admin\CatInformacione\UpdateCatInformacione;
 use App\Models\CatInformacione;
 use App\Models\TipoServicio;
+use App\Models\TipoDebd;
 use Brackets\AdminListing\Facades\AdminListing;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -140,10 +141,12 @@ class CatInformacionesController extends Controller
     // $this->authorize('admin.cat-informacione.edit', $catInformacione);
 
     $tipo_servicios = TipoServicio::all();
+    $tipo_debd = TipoDebd::all();
 
     return view('admin.cat-informacione.edit', [
         'catInformacione' => $catInformacione,
         'tipo_servicios' => $tipo_servicios,
+        'tipo_debd' => $tipo_debd,
     ]);
 }
     /**
@@ -158,6 +161,7 @@ class CatInformacionesController extends Controller
     // Sanitize input
     $sanitized = $request->getSanitized();
     $sanitized['tipo_servicios_id'] = $request->getTipoId();
+    $sanitized['tipo_debd_id'] = $request->getTipoBdId();
 
     // Update changed values CatInformacione
     $catInformacione->update($sanitized);

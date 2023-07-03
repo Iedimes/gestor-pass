@@ -165,10 +165,10 @@
         <div class="form-row">
   <div class="form-group col-md-4">
     <label for="tipo_bd">Tipo de Base de Datos:</label>
-    @if (empty($credenciale->cat_informaciones->tipodebd->nombre))
+    @if (empty($credenciale->cat_informaciones->tipo_debd->nombre))
 
     @else
-    <input type="text" id="tipo_bd" name="tipo_bd" class="form-control custom-input" value="{{ $credenciale->cat_informaciones->tipodebd->nombre }}" readonly>
+    <input type="text" id="tipo_bd" name="tipo_bd" class="form-control custom-input" value="{{ $credenciale->cat_informaciones->tipo_debd->nombre }}" readonly>
     @endif
 
   </div>
@@ -176,10 +176,10 @@
   <div class="form-group col-md-4">
 
  <label for="version_bd">Version de la BD:</label>
-      @if (empty($credenciale->cat_informaciones->tipodebd ->version))
+      @if (empty($credenciale->cat_informaciones->tipo_debd ->version))
 
       @else
-      <input type="text" id="version_bd" name="version_bd" class="form-control custom-input" value="{{ $credenciale->cat_informaciones->tipodebd ->version}}" readonly>
+      <input type="text" id="version_bd" name="version_bd" class="form-control custom-input" value="{{ $credenciale->cat_informaciones->tipo_debd ->version}}" readonly>
       @endif
 
 

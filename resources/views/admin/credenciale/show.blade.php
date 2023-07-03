@@ -32,8 +32,28 @@
 
         </div>
             <div class="form-group col-sm-3">
-
-                            <p class="card-text"><strong>ESTADO:</strong> {{$credenciale->estado->nombre }} </p>
+@if ($credenciale->estado)
+    @if ($credenciale->estado->id == 1)
+        <td><strong>ESTADO:</strong>
+            <span style="text-align:center;">
+                <span class="badge bg-success">{{ $credenciale->estado->nombre }}</span>
+            </span>
+        </td>
+    @elseif ($credenciale->estado->id == 2)
+        <td><strong>ESTADO:</strong>
+            <span style="text-align:center;">
+                <span class="badge bg-primary">{{ $credenciale->estado->nombre }}</span>
+            </span>
+        </td>
+    @elseif ($credenciale->estado->id == 3)
+        <td><strong>ESTADO:</strong>
+            <span style="text-align:center;">
+                <span class="badge bg-warning">{{ $credenciale->estado->nombre }}</span>
+            </span>
+        </td>
+    @endif
+@endif
+                            {{-- <p class="card-text"><strong>ESTADO:</strong> {{$credenciale->estado->nombre }} </p> --}}
 
             </div>
             <div class="form-group col-sm-4">

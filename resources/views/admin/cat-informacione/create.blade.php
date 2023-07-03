@@ -11,6 +11,8 @@
         <cat-informacione-form
             :action="'{{ url('admin/cat-informaciones') }}'"
             :credenciales={{$id}}
+            :tipo_servicios="{{ $tipo_servicios->toJson() }}"
+            :tipo_debd="{{ $tipo_debd->toJson() }}"
             v-cloak
             inline-template>
 

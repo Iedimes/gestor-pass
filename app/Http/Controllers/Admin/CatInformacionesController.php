@@ -74,7 +74,10 @@ class CatInformacionesController extends Controller
     {
         $this->authorize('admin.cat-informacione.create');
 
-        return view('admin.cat-informacione.create', compact('id'));
+        $tipo_servicios = TipoServicio::all();
+        $tipo_debd = TipoDebd::all();
+
+        return view('admin.cat-informacione.create', compact('id', 'tipo_servicios', 'tipo_debd'));
     }
 
 
@@ -88,6 +91,8 @@ class CatInformacionesController extends Controller
     {
         // Sanitize input
        $sanitized = $request->getSanitized();
+       $sanitized['tipo_servicios_id'] = $request->getTipoId();
+       $sanitized['tipo_debd_id'] = $request->getTipoBdId();
 
         // Store the CatInformacione
         $catInformacione = CatInformacione::create($sanitized);

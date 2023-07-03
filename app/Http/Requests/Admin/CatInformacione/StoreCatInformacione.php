@@ -27,13 +27,13 @@ class StoreCatInformacione extends FormRequest
     {
         return [
             'credenciales_id' => ['required'],
-            'tipo_debd_id' => ['required'],
+            'tipo_debd' => ['required'],
             'nombredebd' => ['required', 'string'],
             'versiones' => ['required', 'string'],
             'ssl' => ['required', 'string'],
             'fecha_vec_dominio' => ['required', 'date'],
             'fecha_vec_ssl' => ['required', 'date'],
-            'tipo_servicios_id' => [],
+            'tipo_servicios' => ['required'],
 
         ];
     }
@@ -50,5 +50,15 @@ class StoreCatInformacione extends FormRequest
         //Add your code for manipulation with request data here
 
         return $sanitized;
+    }
+
+    public function getTipoId()
+    {
+        return $this->get('tipo_servicios')['id'];
+    }
+
+    public function getTipoBdId()
+    {
+        return $this->get('tipo_debd')['id'];
     }
 }

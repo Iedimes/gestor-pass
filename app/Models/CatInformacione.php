@@ -9,7 +9,6 @@ class CatInformacione extends Model
     protected $fillable = [
         'credenciales_id',
         'tipo_debd_id',
-        'tipo_debd',
         'nombredebd',
         'versiones',
         'ssl',
